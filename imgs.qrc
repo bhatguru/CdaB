@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="tst-imgs">
+    <file>gst.png</file>
+    <file>tax.png</file>
+    <file>information.png</file>
+    <file>if_icon-98-folder-upload_314782.png</file>
+    <file>if_icon-57-document-download_315180.png</file>
+    <file>if_Open_file_132300.png</file>
+    <file>Actions-dialog-close-icon.png</file>
+    <file>Apps-system-software-update-icon.png</file>
+    <file>Client_list.png</file>
+    <file>imgs.qrc</file>
+    <file>large-icon-user.png</file>
+    <file>contract.png</file>
+    <file>eye.png</file>
+    <file>internet.png</file>
+    <file>man.png</file>
+    <file>plus.png</file>
+    <file>remove.png</file>
+  </qresource>
+</RCC>

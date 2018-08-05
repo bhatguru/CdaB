@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Usermgmt</class>
+ <widget class="QDialog" name="Usermgmt">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>443</width>
+    <height>89</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>UserMgmt</string>
+  </property>
+  <widget class="QWidget" name="gridWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>441</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="6">
+     <widget class="QComboBox" name="mgmtcomboBox"/>
+    </item>
+    <item row="0" column="8">
+     <widget class="QToolButton" name="mgmtremove">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="imgs.qrc">
+        <normaloff>:/tst-imgs/remove.png</normaloff>:/tst-imgs/remove.png</iconset>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="9">
+     <widget class="QToolButton" name="mgmtupdate">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset resource="imgs.qrc">
+        <normaloff>:/tst-imgs/Apps-system-software-update-icon.png</normaloff>:/tst-imgs/Apps-system-software-update-icon.png</iconset>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>

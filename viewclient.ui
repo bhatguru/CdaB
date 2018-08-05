@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>732</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ViewClients</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0" colspan="4">
+    <widget class="QTableWidget" name="cliinfo">
+     <property name="rowCount">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEditv"/>
+   </item>
+   <item row="2" column="0" colspan="4">
+    <widget class="QTableWidget" name="otherinfo"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QComboBox" name="comboBoxv"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="toolButtonopen">
+     <property name="toolTip">
+      <string>view</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/eye.png</normaloff>:/tst-imgs/eye.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QToolButton" name="toolButtonclose">
+     <property name="toolTip">
+      <string>close</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/Actions-dialog-close-icon.png</normaloff>:/tst-imgs/Actions-dialog-close-icon.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>

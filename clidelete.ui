@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialogc</class>
+ <widget class="QDialog" name="Dialogc">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>487</width>
+    <height>63</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Delete clients</string>
+  </property>
+  <widget class="QToolButton" name="toolButtondel">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>20</y>
+     <width>31</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/tst-imgs/remove.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="imgs.qrc">
+     <normaloff>:/tst-imgs/remove.png</normaloff>:/tst-imgs/remove.png</iconset>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxs">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>141</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditcl">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>20</y>
+     <width>201</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="toolButtondel_2">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>20</y>
+     <width>31</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>Actions-dialog-close-icon.png</normaloff>Actions-dialog-close-icon.png</iconset>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>
