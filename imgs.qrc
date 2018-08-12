@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="tst-imgs">
+    <file>if_Add_create_new_more_plus_1886085.png</file>
+    <file>if_Update_100114.png</file>
+    <file>if_ok-sign_173063.png</file>
     <file>gst.png</file>
     <file>tax.png</file>
     <file>information.png</file>
