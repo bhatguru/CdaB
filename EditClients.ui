@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Formedit</class>
+ <widget class="QWidget" name="Formedit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>432</width>
+    <height>79</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit_Clients</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QComboBox" name="comboBoxedit">
+     <property name="toolTip">
+      <string>client id</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEditedit">
+     <property name="toolTip">
+      <string>client name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QToolButton" name="update">
+     <property name="toolTip">
+      <string>Update</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/if_Update_100114.png</normaloff>:/tst-imgs/if_Update_100114.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QToolButton" name="delete_2">
+     <property name="toolTip">
+      <string>Delete</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/remove.png</normaloff>:/tst-imgs/remove.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QToolButton" name="addotherinfo">
+     <property name="toolTip">
+      <string>Add Other Info</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/if_Add_create_new_more_plus_1886085.png</normaloff>:/tst-imgs/if_Add_create_new_more_plus_1886085.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QToolButton" name="close">
+     <property name="toolTip">
+      <string>Close</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="imgs.qrc">
+       <normaloff>:/tst-imgs/Actions-dialog-close-icon.png</normaloff>:/tst-imgs/Actions-dialog-close-icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addother</class>
+ <widget class="QWidget" name="addother">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>527</width>
+    <height>193</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Other Information</string>
+  </property>
+  <widget class="QLabel" name="cliname">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>81</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Client Name</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxother">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>503</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Other Information</string>
+   </property>
+   <widget class="QWidget" name="horizontalWidgetother" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>491</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="desc">
+       <property name="text">
+        <string>Enter Description</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="data">
+       <property name="text">
+        <string>Enter Data</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButtonsave">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="imgs.qrc">
+         <normaloff>:/tst-imgs/if_ok-sign_173063.png</normaloff>:/tst-imgs/if_ok-sign_173063.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>18</width>
+         <height>18</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
+ <connections/>
+</ui>
