@@ -9,6 +9,16 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Update(object):
+
+    def read_cli(self):
+        while 1:
+            with open('curr_cli.txt') as f:
+                data = [line.split() for line in f.readlines()]
+                for i in data:
+                    self.lgcli = i[0]
+                return self.lgcli
+
+
     def setupUi(self, Update):
         Update.setObjectName("Update")
         Update.resize(655, 168)
@@ -57,7 +67,9 @@ class Ui_Update(object):
         self.gridLayout.addWidget(self.horizontalWidget1, 2, 0, 1, 1)
         self.horizontalWidget.raise_()
         self.horizontalWidget.raise_()
+        self.clientname.setText(self.read_cli())
         self.clientname.raise_()
+
 
         self.retranslateUi(Update)
         QtCore.QMetaObject.connectSlotsByName(Update)
@@ -65,7 +77,7 @@ class Ui_Update(object):
     def retranslateUi(self, Update):
         _translate = QtCore.QCoreApplication.translate
         Update.setWindowTitle(_translate("Update", "Update"))
-        self.clientname.setText(_translate("Update", "client_name"))
+        # self.clientname.setText(_translate("Update", "client_name"))
         self.gstn.setText(_translate("Update", "GSTN_PASSWORD"))
         self.tan.setText(_translate("Update", "TAN"))
         self.traces.setText(_translate("Update", "TRACES"))

@@ -9,6 +9,23 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_addother(object):
+
+    def read_cli(self):
+        while 1:
+            with open('curr_cli.txt') as f:
+                data = [line.split() for line in f.readlines()]
+                for i in data:
+                    self.lgcli = i[0]
+                return self.lgcli
+
+    def InsertAdata(name_id):
+        name_id = name_id
+        Description = self.lineEdit_10.text()
+        Data = self.lineEdit_5.text()
+        conn.execute("INSERT INTO otherinfo VALUES (?,?,?)", (Description, Data, name_id))
+        conn.commit()
+        self.successful()
+
     def setupUi(self, addother):
         addother.setObjectName("addother")
         addother.resize(527, 193)
@@ -37,6 +54,7 @@ class Ui_addother(object):
         self.toolButtonsave.setIconSize(QtCore.QSize(18, 18))
         self.toolButtonsave.setObjectName("toolButtonsave")
         self.horizontalLayout.addWidget(self.toolButtonsave)
+        self.cliname.setText(self.read_cli())
 
         self.retranslateUi(addother)
         QtCore.QMetaObject.connectSlotsByName(addother)
@@ -44,7 +62,7 @@ class Ui_addother(object):
     def retranslateUi(self, addother):
         _translate = QtCore.QCoreApplication.translate
         addother.setWindowTitle(_translate("addother", "Other Information"))
-        self.cliname.setText(_translate("addother", "Client Name"))
+        # self.cliname.setText(_translate("addother", "Client Name"))
         self.groupBoxother.setTitle(_translate("addother", "Other Information"))
         self.desc.setText(_translate("addother", "Enter Description"))
         self.data.setText(_translate("addother", "Enter Data"))

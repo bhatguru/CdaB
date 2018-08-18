@@ -12,6 +12,7 @@ from usrmgmt import *
 from clientreg import *
 from clidelete import *
 from viewclient import *
+from EditClients import *
 class Ui_AssociateDataBase(object):
     def currusr(self):
         while 1:
@@ -45,6 +46,12 @@ class Ui_AssociateDataBase(object):
         self.regcl.ui = Ui_RegisterClient()
         self.regcl.ui.setupUi(self.regcl)
         self.regcl.show()
+
+    def editcliopen(self):
+        self.edt = QtWidgets.QWidget()
+        self.edt.ui = Ui_Formedit()
+        self.edt.ui.setupUi(self.edt)
+        self.edt.show()
 
     def setupUi(self, AssociateDataBase):
         AssociateDataBase.setObjectName("AssociateDataBase")
@@ -115,6 +122,7 @@ class Ui_AssociateDataBase(object):
         self.edit.setIcon(icon4)
         self.edit.setIconSize(QtCore.QSize(25, 25))
         self.edit.setObjectName("edit")
+        self.edit.clicked.connect(self.editcliopen)
         self.websurf = QtWidgets.QPushButton(self.centralwidget)
         self.websurf.setGeometry(QtCore.QRect(20, 320, 41, 31))
         self.websurf.setStyleSheet("")
