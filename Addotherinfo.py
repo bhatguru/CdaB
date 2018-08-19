@@ -7,8 +7,18 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+import sqlite3
+conn = sqlite3.connect('Users.db')
 
 class Ui_addother(object):
+
+    def successful(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Information added Successfuly")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
     def read_cli(self):
         while 1:
@@ -16,12 +26,13 @@ class Ui_addother(object):
                 data = [line.split() for line in f.readlines()]
                 for i in data:
                     self.lgcli = i[0]
-                return self.lgcli
+                    self.lgid = i[1]
+                return self.lgcli , self.lgid
 
-    def InsertAdata(name_id):
-        name_id = name_id
-        Description = self.lineEdit_10.text()
-        Data = self.lineEdit_5.text()
+    def InsertAdata(self):
+        name, name_id = self.read_cli()
+        Description = self.desc.text()
+        Data = self.data.text()
         conn.execute("INSERT INTO otherinfo VALUES (?,?,?)", (Description, Data, name_id))
         conn.commit()
         self.successful()
@@ -53,8 +64,10 @@ class Ui_addother(object):
         self.toolButtonsave.setIcon(icon)
         self.toolButtonsave.setIconSize(QtCore.QSize(18, 18))
         self.toolButtonsave.setObjectName("toolButtonsave")
+        self.toolButtonsave.clicked.connect(self.InsertAdata)
         self.horizontalLayout.addWidget(self.toolButtonsave)
-        self.cliname.setText(self.read_cli())
+        name, name_id = self.read_cli()
+        self.cliname.setText(name)
 
         self.retranslateUi(addother)
         QtCore.QMetaObject.connectSlotsByName(addother)

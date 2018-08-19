@@ -17,9 +17,9 @@ class Ui_Formedit(object):
 
     def curr_cli(self):
         lgd = [self.lineEditedit.text(), self.comboBoxedit.currentText()]
-        itms = (lgd[0], lgd[1])
+        name,id = lgd[0], lgd[1]
         with open('curr_cli.txt','w') as f:
-            f.write(str(itms))
+            f.write(str(name)+' '+str(id))
 
     def currusr(self):
         while 1:
