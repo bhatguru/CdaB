@@ -25,10 +25,6 @@ class Ui_login_3(object):
         if (len(result.fetchall()) > 0):
             self.is_logedin()
             self.homeopen()
-            self.loginuname.setDisabled(True)
-            self.loginpwd.setDisabled(True)
-            self.login.setDisabled(True)
-            self.signup.setDisabled(True)
         else:
             self.InvalidInfo()
             self.loginuname.clear()
@@ -37,8 +33,6 @@ class Ui_login_3(object):
     def Disabled(self):
         if self.loginuname.text() and self.loginpwd.text() != str(0):
             self.login.setDisabled(False)
-        else:
-            self.Nodata()
 
     def InvalidInfo(self):
         msg = QMessageBox()
@@ -47,18 +41,19 @@ class Ui_login_3(object):
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
 
-    def Nodata(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Critical)
-        msg.setText("Please Enter User Name and Password")
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.exec_()
+    # def Nodata(self):
+    #     msg = QMessageBox()
+    #     msg.setIcon(QMessageBox.Critical)
+    #     msg.setText("Please Enter User Name and Password")
+    #     msg.setStandardButtons(QMessageBox.Ok)
+    #     msg.exec_()
 
     def homeopen(self):
         self.hopen = QtWidgets.QMainWindow()
         self.hopen.ui = Ui_AssociateDataBase()
         self.hopen.ui.setupUi(self.hopen)
         self.hopen.show()
+
 
     def openreg(self):
         self.sigp = QtWidgets.QWidget()
