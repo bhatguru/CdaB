@@ -12,31 +12,25 @@ from PyQt5.QtWidgets import QMessageBox
 conn = sqlite3.connect('Users.db',timeout=10)
 class Ui_Update(object):
 
-    # def check(self):
-    #     if self.is_selected() != "empty" and self.updatevalue.text() != str(0):
-    #         self.updatebtn.setDisabled(False)
-
     def UpdateData(self):
         c_name, name_id = self.read_cli()
         slctd = self.is_selected()
         if slctd == 'tan':
-            tan = self.updatevalue.text()
-            updt = conn.execute("UPDATE clientsreg SET tan = :tan WHERE name_id = :name_id ",
-                                {'tan': tan, 'name_id': name_id})
+            n_tan = self.updatevalue.text()
+            updt = conn.execute('''UPDATE clientsreg SET tan = ? WHERE name_id = ? ''', (n_tan, name_id))
             conn.commit()
             self.successfull()
         elif slctd == 'gstn':
             gstn_paswd = self.updatevalue.text()
-            updt = conn.execute("UPDATE clientsreg SET gstn_paswd = :gstn_paswd WHERE name_id = :name_id ",
-                                {'gstn_paswd': gstn_paswd, 'name_id': name_id})
+            updt = conn.execute('''UPDATE clientsreg SET gstn_paswd = ? WHERE name_id = ? ''',(gstn_paswd, name_id))
             conn.commit()
             self.successfull()
         else:
             traces = self.updatevalue.text()
-            updt = conn.execute("UPDATE clientsreg SET traces = :traces WHERE name_id = :name_id ",
-                                {'traces': traces, 'name_id': name_id})
-            self.successfull()
+            updt = conn.execute('''UPDATE clientsreg SET traces = ? WHERE name_id = ? ''',(traces, name_id))
             conn.commit()
+            self.successfull()
+
 
     def successfull(self):
         msg = QMessageBox()
@@ -45,29 +39,33 @@ class Ui_Update(object):
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
 
-    def successful(self):
+    def warning(self):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
-        msg.setText("Please Check Radio Button to Update")
+        msg.setText("Please Enter value to Update")
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
 
     def is_selected(self):
         if self.gstn.isChecked() == True:
-            self.updatevalue.setText("Enter New GSTN Password..")
+            self.updatevalue.setPlaceholderText("Enter New GSTN Password..")
             self.dt ="gstn"
+            self.updatebtn.setDisabled(False)
             return self.dt
         elif self.tan.isChecked() == True:
-            self.updatevalue.setText("Enter Tan Details")
+            self.updatevalue.setPlaceholderText("Enter Tan Details")
             self.dt = "tan"
+            self.updatebtn.setDisabled(False)
             return self.dt
         elif self.traces.isChecked() == True:
-            self.updatevalue.setText("Enter Traces Details")
+            self.updatevalue.setPlaceholderText("Enter Traces Details")
             self.dt = "traces"
+            self.updatebtn.setDisabled(False)
             return self.dt
         else:
             self.successful()
             dt = "empty"
+            self.updatebtn.setDisabled(False)
             return self.dt
 
 
@@ -95,22 +93,16 @@ class Ui_Update(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.gstn = QtWidgets.QRadioButton(self.horizontalWidget)
         self.gstn.setObjectName("gstn")
+        self.gstn.clicked.connect(self.is_selected)
         self.horizontalLayout.addWidget(self.gstn)
         self.tan = QtWidgets.QRadioButton(self.horizontalWidget)
         self.tan.setObjectName("tan")
         self.horizontalLayout.addWidget(self.tan)
+        self.tan.clicked.connect(self.is_selected)
         self.traces = QtWidgets.QRadioButton(self.horizontalWidget)
         self.traces.setObjectName("traces")
+        self.traces.clicked.connect(self.is_selected)
         self.horizontalLayout.addWidget(self.traces)
-        self.okbtn = QtWidgets.QToolButton(self.horizontalWidget)
-        self.okbtn.setText("")
-        self.okbtn.clicked.connect(self.is_selected)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/tst-imgs/if_ok-sign_173063.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.okbtn.setIcon(icon)
-        self.okbtn.setIconSize(QtCore.QSize(18, 18))
-        self.okbtn.setObjectName("okbtn")
-        self.horizontalLayout.addWidget(self.okbtn)
         self.gridLayout.addWidget(self.horizontalWidget, 1, 0, 1, 1)
         self.horizontalWidget1 = QtWidgets.QWidget(Update)
         self.horizontalWidget1.setObjectName("horizontalWidget1")
@@ -133,7 +125,7 @@ class Ui_Update(object):
         self.horizontalWidget.raise_()
         name,name_id = self.read_cli()
         self.clientname.setText(name)
-        # self.check()
+        self.updatebtn.setDisabled(True)
         self.clientname.raise_()
 
 
@@ -147,7 +139,6 @@ class Ui_Update(object):
         self.gstn.setText(_translate("Update", "GSTN_PASSWORD"))
         self.tan.setText(_translate("Update", "TAN"))
         self.traces.setText(_translate("Update", "TRACES"))
-        self.okbtn.setToolTip(_translate("Update", "OK"))
         self.updatevalue.setToolTip(_translate("Update", "Enter value to update"))
         self.updatebtn.setToolTip(_translate("Update", "Update"))
 

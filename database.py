@@ -21,7 +21,7 @@ def insertTable():
 	connection.close()
 
 def ViewTable():
-	result = connection.execute("SELECT * FROM otherinfo")
+	result = connection.execute("SELECT * FROM clientsreg")
 	for data in result.fetchall():
 		print (data)
 
