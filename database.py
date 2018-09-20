@@ -26,10 +26,13 @@ def ViewTable():
 		print (data)
 
 def idgenerator():
-	result = connection.execute("SELECT name_id FROM clientsreg")
-	row = result.fetchall()
-	currcount = len(row)
-	newid = currcount +1
+	result = connection.execute("SELECT max(name_id) FROM clientsreg")
+
+	data = result.fetchall()
+
+	myList = data[0]
+	currlt = myList[0]
+	newid = currlt +1
 	print(newid)
 
 def DeleteTable():
@@ -61,7 +64,7 @@ def UpdateData():
 	connection.commit()
 # idgenerator()
 # insertTable()
-ViewTable()
+# ViewTable()
 # DeleteTable()
 # listtable()
 # createTable()

@@ -19,6 +19,7 @@ class Ui_Dialogc(object):
         msg.setStandardButtons(QMessageBox.Ok)
         msg.exec_()
 
+
     def currusr(self):
         while 1:
             with open('is_logedin.txt') as f:

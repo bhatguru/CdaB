@@ -28,11 +28,13 @@ class Ui_RegisterClient(object):
                 return self.lguser
 
     def idgenerator(self):
-        result = conn.execute("SELECT name_id FROM clientsreg")
-        row = result.fetchall()
-        currcount = len(row)
-        newid = currcount + 1
+        result = conn.execute("SELECT max(name_id) FROM clientsreg")
+        data = result.fetchall()
+        myList = data[0]
+        currlt = myList[0]
+        newid = currlt + 1
         return newid
+        # print(newid)
 
     def InsertData(self):
         name_id = self.idgenerator()
