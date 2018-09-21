@@ -22,6 +22,7 @@ class Ui_AssociateDataBase(object):
                     self.lguser = i[0]
                 return self.lguser
 
+
     def useropen(self):
         self.usmgmt = QtWidgets.QDialog()
         self.usmgmt.ui = Ui_Usermgmt()

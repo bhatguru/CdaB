@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication,QWidget,QPushButton,QMessageBox
 import os
 from login import *
 from changepassword import *
@@ -18,21 +19,15 @@ class Ui_Usermgmt(object):
         self.chp.ui = Ui_changepassword()
         self.chp.ui.setupUi(self.chp)
         self.chp.show()
-    def successful(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setText("User Deleted Successfuly")
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.exec_()
 
     def deleteusr(self):
+        self.delu = UApp()
         usrname = self.mgmtcomboBox.currentText()
-        if usrname != 'vinay':
-            dlt = conn.execute("DELETE FROM USERS WHERE Username = :uname ",{'uname': usrname})
-            conn.commit()
-            self.successful()
+        with open('delu.txt', 'w') as f:
+            f.write(usrname)
             self.mgmtcomboBox.clear()
             self.scusers()
+
     def scusers(self):
         usrs = conn.execute("SELECT * FROM USERS")
         count = 0
@@ -48,6 +43,8 @@ class Ui_Usermgmt(object):
         if logedinuser == admin:
             self.mgmtcomboBox.setDisabled(False)
             self.mgmtremove.setDisabled(False)
+
+
     def setupUi(self, Usermgmt):
         Usermgmt.setObjectName("Usermgmt")
         Usermgmt.resize(443, 89)
@@ -90,6 +87,35 @@ class Ui_Usermgmt(object):
         Usermgmt.setWindowTitle(_translate("Usermgmt", "UserMgmt"))
 
 import imgs
+
+class UApp(QWidget):
+    def __init__(self):
+        super().__init__()
+        buttonReply = QMessageBox.question(self, 'Important!!', "Do you like to Delete?", QMessageBox.Yes | QMessageBox.No,
+                                           QMessageBox.No)
+        if buttonReply == QMessageBox.Yes:
+            usrname = self.delu()
+            if usrname != 'vinay':
+                dlt = conn.execute("DELETE FROM USERS WHERE Username = :uname ", {'uname': usrname})
+                conn.commit()
+                self.successful()
+        else:
+            pass
+
+    def delu(self):
+        while 1:
+            with open('delu.txt') as f:
+                data = [line.split() for line in f.readlines()]
+                for i in data:
+                    self.dun = i[0]
+                return self.dun
+
+    def successful(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("User Deleted Successfuly")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 if __name__ == "__main__":
     import sys

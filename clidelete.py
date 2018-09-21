@@ -7,17 +7,12 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication,QWidget,QPushButton,QMessageBox
 import sqlite3
 from PyQt5.QtWidgets import QMessageBox
+# from fdilog import *
 conn = sqlite3.connect('Users.db',timeout=10)
 class Ui_Dialogc(object):
-
-    def successful(self):
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setText("Client Deleted Successfuly")
-        msg.setStandardButtons(QMessageBox.Ok)
-        msg.exec_()
 
 
     def currusr(self):
@@ -45,12 +40,15 @@ class Ui_Dialogc(object):
                 self.lineEditcl.clear()
                 self.lineEditcl.setText(i)
 
+    def deletedata(self):
+        self.delc = App()
+
 
     def deleteclient(self):
-        clid = self.comboBoxs.currentText()
-        dlt = conn.execute("DELETE FROM clientsreg WHERE name_id = :name_id ",{'name_id': clid})
-        conn.commit()
-        self.successful()
+        self.deletedata()
+        dld = str(self.comboBoxs.currentText())
+        with open('delc.txt', 'w') as f:
+            f.write(dld)
         self.comboBoxs.clear()
         self.listclid()
 
@@ -93,6 +91,34 @@ class Ui_Dialogc(object):
         Dialogc.setWindowTitle(_translate("Dialogc", "Delete clients"))
 
 import imgs
+
+class App(QWidget):
+    def __init__(self):
+        super().__init__()
+        buttonReply = QMessageBox.question(self, 'Important!!', "Do you like to Delete?", QMessageBox.Yes | QMessageBox.No,
+                                           QMessageBox.No)
+        if buttonReply == QMessageBox.Yes:
+            clid = self.delclt()
+            dlt = conn.execute("DELETE FROM clientsreg WHERE name_id = :name_id ", {'name_id': clid})
+            conn.commit()
+            self.successful()
+        else:
+            pass
+
+    def delclt(self):
+        while 1:
+            with open('delc.txt') as f:
+                data = [line.split() for line in f.readlines()]
+                for i in data:
+                    self.cid = i[0]
+                return self.cid
+
+    def successful(self):
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Information)
+        msg.setText("Client Deleted Successfuly")
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.exec_()
 
 if __name__ == "__main__":
     import sys
